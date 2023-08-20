@@ -1,1 +1,18 @@
-{}
+{
+  "[development]": {
+      "auth": {
+          "passport": {
+              "strategy": "mock",
+              "users": {
+                  "glauco": {
+                      "password": "12345",
+                      "ID": "glauco",
+                      "roles": [
+                          "Manager" 
+                      ] 
+                  } 
+              }
+          }
+      }
+  }
+}

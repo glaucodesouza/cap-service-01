@@ -23,6 +23,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: masterdatacapproject-db
+      - name: masterdatacapproject-auth
 
   - name: masterdatacapproject-db-deployer
     type: hdb
@@ -38,3 +39,12 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: masterdatacapproject-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: masterdatacapproject-${org}-${space}
+        tenant-mode: dedicated

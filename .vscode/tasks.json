@@ -26,6 +26,24 @@
         "--in-memory?"
       ],
       "problemMatcher": []
+    },
+    {
+      "label": "cds-deploy-to-hana-masterdatacapproject-dev",
+      "type": "shell",
+      "command": "cds",
+      "args": [
+        "deploy",
+        "--to",
+        "hana:dev",
+        "--no-save"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/masterdatacapproject"
+      },
+      "isBackground": true,
+      "problemMatcher": [
+        "$cap-hdi-bind-handler"
+      ]
     }
   ]
 }

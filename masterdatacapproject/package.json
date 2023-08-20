@@ -7,14 +7,37 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/hana-client": "^2.17.22",
     "express": "^4",
-    "@sap/cds-hana": "^2"
+    "passport": "^0",
+    "@sap/xssec": "^3"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
-    "@sap/cds-dk": "^7"
+    "@sap/cds-dk": "^7",
+    "@sap/hdi-deploy": "4.7.1"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "build": "cds build/all --clean;cp gen/srv/srv/csn.json srv/gen/;cp -r gen/db/src/gen db/src"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sql"
+      },
+      "[production]": {
+        "db": {
+            "kind": "hana-cloud"
+        },
+        "auth": {
+          "kind": "xsuaa"
+        }
+      }
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    }
   }
 }
